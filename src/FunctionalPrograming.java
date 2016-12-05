@@ -39,7 +39,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
-public class StreamExample3 {
+public class FunctionalPrograming {
 
 	static List<String> movieData;
 	static List<String> movies70;
@@ -98,12 +98,11 @@ public class StreamExample3 {
 		/****Print Question 4****/
 		System.out.println("\nWhich studio made the most money off of blockbusters in the 60s?");
 		
-		Optional <String> mostMoney60s = movieData.stream().filter((line) -> (Integer.valueOf(getYear(line)) < 1970))
+		/****Filter out studios and sum there total gross****/
+		movieData.stream().filter((line) -> (Integer.valueOf(getYear(line)) < 1970))
 		.filter((line) -> (Integer.valueOf(getYear(line)) > 1959))
-		.sorted((line1,line2)->-(Double.valueOf(getAmount(line1)).compareTo(Double.valueOf(getAmount(line2)))))
+		.sorted((line1,line2) -> -(Double.valueOf(getAmount(line1)).compareTo(Double.valueOf(getAmount(line2)))))
 		.findFirst();
-		
-		System.out.println(mostMoney60s);
 		
 	}
 
